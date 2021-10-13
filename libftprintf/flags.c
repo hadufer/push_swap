@@ -6,7 +6,7 @@
 /*   By: hadufer <hadufer@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/13 19:49:28 by hadufer           #+#    #+#             */
-/*   Updated: 2021/09/03 17:30:19 by hadufer          ###   ########.fr       */
+/*   Updated: 2021/10/13 17:02:13 by hadufer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,14 +87,14 @@ int	precision_handler(const char *fmt, size_t *i, t_printf *pf)
 	return (-1);
 }
 
-int	specifier_handler(const char *fmt, size_t *i, t_printf *pf, va_list va_list)
+int	specifier_handler(const char *fmt, size_t *i, t_printf *pf, va_list val)
 {
 	if (fmt[*i] == 'c')
-		print_char(va_arg(va_list, int), pf);
+		print_char(va_arg(val, int), pf);
 	else if (fmt[*i] == 's')
-		print_string(va_arg(va_list, char *), pf);
+		print_string(va_arg(val, char *), pf);
 	else if (fmt[*i] == 'u')
-		print_unsigned(va_arg(va_list, unsigned int), 10, pf);
+		print_unsigned(va_arg(val, unsigned int), 10, pf);
 	else if (fmt[*i] == 'p' || fmt[*i] == 'x' || fmt[*i] == 'X')
 	{
 		if (fmt[*i] == 'p' || pf->altfmt)
@@ -103,10 +103,10 @@ int	specifier_handler(const char *fmt, size_t *i, t_printf *pf, va_list va_list)
 			pf->capitals = 16;
 		if (fmt[*i] == 'p')
 			pf->truncate = 0;
-		print_unsigned(va_arg(va_list, unsigned long), 16, pf);
+		print_unsigned(va_arg(val, unsigned long), 16, pf);
 	}
 	else if (fmt[*i] == 'i' || fmt[*i] == 'd')
-		print_signed(va_arg(va_list, long), 10, pf);
+		print_signed(va_arg(val, long), 10, pf);
 	else if (fmt[*i] == '%')
 		ft_putchar_fd('%', 1);
 	else

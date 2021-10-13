@@ -6,7 +6,7 @@
 /*   By: hadufer <hadufer@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 19:38:34 by hadufer           #+#    #+#             */
-/*   Updated: 2021/09/03 17:33:01 by hadufer          ###   ########.fr       */
+/*   Updated: 2021/10/13 16:56:02 by hadufer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,4 @@ int			width_handler(const char *fmt, size_t *i, t_printf *pf);
 int			precision_handler(const char *fmt, size_t *i, t_printf *pf);
 int			specifier_handler(const char *fmt, size_t *i, \
 								t_printf *pf, va_list va_list);
-
 #endif
