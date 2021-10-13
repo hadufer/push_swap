@@ -6,7 +6,7 @@
 /*   By: hadufer <hadufer@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 13:58:14 by hadufer           #+#    #+#             */
-/*   Updated: 2021/10/12 19:52:32 by hadufer          ###   ########.fr       */
+/*   Updated: 2021/10/13 17:27:25 by hadufer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,36 +22,26 @@ int	ft_isspace(int c)
 	return (0);
 }
 
-int	ft_strcmp_digit(char *a, char *b)
+static long	ft_cmp_int(char *a, char *b)
 {
-	unsigned int	i;
+	long	ret;
 
-	i = 0;
 	a = ft_strtrim(a, " \t\n\v\f\r");
 	b = ft_strtrim(b, " \t\n\v\f\r");
-	while (a[i] && b[i])
-	{
-		if (a[i] != b[i] || !ft_isdigit(a[i]) || !ft_isdigit(b[i]))
-		{
-			free(a);
-			free(b);
-			return (a[i] - b[i]);
-		}
-		i++;
-	}
+	ret = ft_atoi(a) - ft_atoi(b);
 	free(a);
 	free(b);
-	return (0);
+	return (ret);
 }
 
 int	is_single(int ac, char **av, int to_test)
 {
-	int	i;
+	int		i;
 
 	i = 1;
 	while (i < ac)
 	{
-		if (i != to_test && !ft_strcmp_digit(av[i], av[to_test]))
+		if (i != to_test && !ft_cmp_int(av[i], av[to_test]))
 			return (0);
 		i++;
 	}

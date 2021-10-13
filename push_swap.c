@@ -6,7 +6,7 @@
 /*   By: hadufer <hadufer@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 13:37:35 by hadufer           #+#    #+#             */
-/*   Updated: 2021/10/12 20:34:35 by hadufer          ###   ########.fr       */
+/*   Updated: 2021/10/13 18:57:22 by hadufer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "libft.h"
 #include "push_swap.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 t_unit	*init_new_unit(char *str_digit, unsigned int sorted_index)
 {
@@ -34,13 +35,10 @@ t_list	*init_list(int ac, char **av)
 {
 	t_list			*out;
 	t_unit			*tmp_u;
-	char			*trimed_str;
 	unsigned int	i;
 
 	i = 1;
-	trimed_str = ft_strtrim(av[i], " \t\n\v\f\r");
 	out = ft_lstnew(init_new_unit(av[i], i - 1));
-	free(trimed_str);
 	if (!out)
 		return (NULL);
 	i++;
@@ -49,7 +47,7 @@ t_list	*init_list(int ac, char **av)
 		tmp_u = init_new_unit(av[i], i - 1);
 		if (tmp_u == NULL)
 			return (NULL);
-		ft_lstadd_back(&out, ft_lstnew(tmp_u));
+		ft_lstadd_back(&out, ft_lstnew(init_new_unit(av[i], i - 1)));
 		i++;
 	}
 	return (out);
@@ -82,12 +80,25 @@ int	main(int ac, char **av)
 		return (1);
 	}
 	list_quick_sort(stack_a, 0, list_get_size(stack_a));
+	swap(&stack_a);
 	// DEBUG
 	t_list *tmp = stack_a;
+	t_list *tmp2 = stack_b;
+	// DEBUG PRINTF
+	printf("STACK A:\n");
 	while (tmp)
 	{
-		ft_printf("index:%d = value:%d\n", ((t_unit *)(tmp->content))->sorted_index, ((t_unit *)(tmp->content))->number);
+		// DEBUG PRINTF
+		printf("index:%d = value:%d\n", ((t_unit *)(tmp->content))->sorted_index, ((t_unit *)(tmp->content))->number);
 		tmp = tmp->next;
+	}
+	// DEBUG PRINTF
+	printf("STACK B:\n");
+	while (tmp2)
+	{
+		// DEBUG PRINTF
+		printf("index:%d = value:%d\n", ((t_unit *)(tmp2->content))->sorted_index, ((t_unit *)(tmp2->content))->number);
+		tmp2 = tmp2->next;
 	}
 	clear_exit(stack_a, stack_b);
 }
