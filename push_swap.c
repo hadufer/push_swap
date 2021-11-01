@@ -6,7 +6,7 @@
 /*   By: hadufer <hadufer@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 13:37:35 by hadufer           #+#    #+#             */
-/*   Updated: 2021/10/13 18:57:22 by hadufer          ###   ########.fr       */
+/*   Updated: 2021/11/01 17:15:14 by hadufer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int	main(int ac, char **av)
 		return (1);
 	}
 	list_quick_sort(stack_a, 0, list_get_size(stack_a));
-	swap(&stack_a);
+	logic(&stack_a, &stack_b);
 	// DEBUG
 	t_list *tmp = stack_a;
 	t_list *tmp2 = stack_b;

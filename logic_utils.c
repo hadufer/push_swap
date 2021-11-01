@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   logic_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hadufer <hadufer@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/29 18:59:17 by hadufer           #+#    #+#             */
-/*   Updated: 2021/10/18 11:23:53 by hadufer          ###   ########.fr       */
+/*   Created: 2021/11/01 13:40:51 by hadufer           #+#    #+#             */
+/*   Updated: 2021/11/01 18:31:21 by hadufer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "push_swap.h"
 #include "libft.h"
 
-char	*ft_strnstr(const char *s1, const char *s2, size_t len)
+//	Do the median of the stack t_list and apply
+//	rotate or rrotate based on wich one is the more
+//	efficient.
+void	median_rotate(t_list **a, int num)
 {
-	size_t	tmp_len;
-	size_t	s2_len;
+	int	index;
+	int	median;
 
-	if (!*s2)
-		return ((char *)s1);
-	tmp_len = len;
-	s2_len = ft_strlen(s2);
-	while (*(char *)s1 && (tmp_len >= s2_len))
-	{
-		if (*(char *)s1 == *s2)
-		{
-			if (ft_strncmp((char *)s2, (char *)s1, s2_len) == 0)
-				return ((char *)s1);
-		}
-		tmp_len--;
-		s1 = s1 + 1;
-	}
-	return (NULL);
+	index = list_get_index(*a, num);
+	median = (list_get_size(*a) / 2);
+	if (median > index)
+		rotate(a);
+	else
+		rrotate(a);
 }
+

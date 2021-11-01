@@ -6,7 +6,7 @@
 #    By: hadufer <hadufer@student.42nice.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/12 13:33:44 by hadufer           #+#    #+#              #
-#    Updated: 2021/10/12 13:35:25 by hadufer          ###   ########.fr        #
+#    Updated: 2021/11/01 17:23:40 by hadufer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,10 +22,12 @@ OBJS = $(SRCS:.c=.o)
 %.o: %.c
 	$(CC) $(CFLAGS) -I/usr/include -I./Libftprintf/Libft -I./Libftprintf -c $< -o $@
 
-$(NAME): $(OBJS) libftprintf
-	$(CC) $(OBJS) -L./Libftprintf/ -l:libftprintf.a -o $(NAME)
+all: $(NAME)
 
-libftprintf:
+$(NAME): $(OBJS) ./Libftprintf/libftprintf.a
+	$(CC) $(CFLAGS) $(OBJS) ./libftprintf/libftprintf.a -o $(NAME)
+
+./Libftprintf/libftprintf.a:
 	$(MAKE) -C ./Libftprintf
 
 clean:
@@ -38,4 +40,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean flcean re libftprintf
+.PHONY: all clean flcean re

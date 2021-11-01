@@ -6,46 +6,12 @@
 /*   By: hadufer <hadufer@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 17:35:28 by hadufer           #+#    #+#             */
-/*   Updated: 2021/10/12 18:06:20 by hadufer          ###   ########.fr       */
+/*   Updated: 2021/11/01 18:23:23 by hadufer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "libft.h"
-
-static t_unit	*get_unit_s_index(t_list *list, int number)
-{
-	t_list			*tmp;
-	int				i;
-
-	i = 0;
-	tmp = list;
-	while (tmp)
-	{
-		if (((t_unit *)(tmp->content))->sorted_index == number)
-			return ((t_unit *)(tmp->content));
-		i++;
-		tmp = tmp->next;
-	}
-	return (NULL);
-}
-
-static t_unit	*get_unit_number(t_list *list, int number)
-{
-	t_list			*tmp;
-	int				i;
-
-	i = 0;
-	tmp = list;
-	while (tmp)
-	{
-		if (((t_unit *)(tmp->content))->number == number)
-			return ((t_unit *)(tmp->content));
-		i++;
-		tmp = tmp->next;
-	}
-	return (NULL);
-}
 
 static void	swap_s_index(t_unit *a, t_unit *b)
 {

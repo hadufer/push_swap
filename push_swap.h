@@ -6,7 +6,7 @@
 /*   By: hadufer <hadufer@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 14:09:23 by hadufer           #+#    #+#             */
-/*   Updated: 2021/10/13 18:57:06 by hadufer          ###   ########.fr       */
+/*   Updated: 2021/11/01 18:26:02 by hadufer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,20 @@ int				list_get_size(t_list *list);
 void			list_quick_sort(t_list *list, int low, int high);
 t_unit			*new_unit(int number, int sorted_index);
 void			delete_unit(void *unit);
+t_unit			*get_unit_number(t_list *list, int number);
+t_unit			*get_unit_s_index(t_list *list, int number);
+t_unit			*get_min_unit(t_list *a);
 void			push(t_list **a, t_list **b);
 void			swap(t_list **a);
 void			rotate(t_list **a);
 void			rrotate(t_list **a);
+void			case_213(t_list **a);
+void			case_321(t_list **a);
+void			case_312(t_list **a);
+void			case_132(t_list **a);
+void			case_231(t_list **a);
+void			median_rotate(t_list **a, int num);
+int				handler_case_3(t_list **a, t_list **b);
+int				logic(t_list **a, t_list **b);
+
 #endif

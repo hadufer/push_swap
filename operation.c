@@ -6,7 +6,7 @@
 /*   By: hadufer <hadufer@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 17:10:19 by hadufer           #+#    #+#             */
-/*   Updated: 2021/10/13 18:56:49 by hadufer          ###   ########.fr       */
+/*   Updated: 2021/11/01 17:19:43 by hadufer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,9 @@ void	push(t_list **a, t_list **b)
 	t_list	*new;
 	t_list	*tmp;
 
-	new = ft_lstnew(new_unit(((t_unit *)((*a)->content))->number,
-		((t_unit *)((*a)->content))->sorted_index));
+	new = ft_lstnew(new_unit(((t_unit *)((*a)->content))->number, ((t_unit *)((*a)->content))->sorted_index));
 	new = (void *)new;
-	ft_lstadd_back(b, new);
+	ft_lstadd_front(b, new);
 	tmp = (*a)->next;
 	ft_lstdelone(*a, delete_unit);
 	*a = tmp;
