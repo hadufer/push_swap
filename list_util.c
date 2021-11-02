@@ -6,7 +6,7 @@
 /*   By: hadufer <hadufer@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 17:00:22 by hadufer           #+#    #+#             */
-/*   Updated: 2021/11/01 18:26:14 by hadufer          ###   ########.fr       */
+/*   Updated: 2021/11/02 15:35:25 by hadufer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,27 @@ t_unit	*get_min_unit(t_list *a)
 	{
 		if (!ret)
 			ret = ((t_unit *)((tmp)->content));
-		if (ret->number <= ((t_unit *)((tmp)->content))->number)
+		if (ret->number >= ((t_unit *)((tmp)->content))->number)
+			ret = ((t_unit *)((tmp)->content));
+		tmp = tmp->next;
+	}
+	return (ret);
+}
+
+// Return min unit int t_list *a with s_index < quarter_limt
+t_unit	*get_min_unit_quarter(t_list *a, int quarter_limit)
+{
+	t_list	*tmp;
+	t_unit	*ret;
+
+	tmp = a;
+	ret = NULL;
+	while (tmp)
+	{
+		if (!ret && ((t_unit *)((tmp)->content))->sorted_index < quarter_limit)
+			ret = ((t_unit *)((tmp)->content));
+		if (ret && (ret->number >= ((t_unit *)((tmp)->content))->number) &&
+				((t_unit *)((tmp)->content))->sorted_index < quarter_limit)
 			ret = ((t_unit *)((tmp)->content));
 		tmp = tmp->next;
 	}

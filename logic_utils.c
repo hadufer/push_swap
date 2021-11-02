@@ -6,7 +6,7 @@
 /*   By: hadufer <hadufer@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 13:40:51 by hadufer           #+#    #+#             */
-/*   Updated: 2021/11/01 18:31:21 by hadufer          ###   ########.fr       */
+/*   Updated: 2021/11/02 11:18:17 by hadufer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,3 +29,21 @@ void	median_rotate(t_list **a, int num)
 		rrotate(a);
 }
 
+//	Return 1 if t_list is sorted in order else 0;
+int	is_list_sorted(t_list *a)
+{
+	t_list	*tmp;
+	int		last_num;
+
+	tmp = a;
+	last_num = ((t_unit *)(tmp->content))->sorted_index;
+	while (tmp)
+	{
+		tmp = tmp->next;
+		if (tmp && (last_num > ((t_unit *)(tmp->content))->sorted_index))
+			return (0);
+		if (tmp)
+			last_num = ((t_unit *)(tmp->content))->sorted_index;
+	}
+	return (1);
+}

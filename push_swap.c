@@ -6,7 +6,7 @@
 /*   By: hadufer <hadufer@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 13:37:35 by hadufer           #+#    #+#             */
-/*   Updated: 2021/11/01 17:15:14 by hadufer          ###   ########.fr       */
+/*   Updated: 2021/11/02 11:10:55 by hadufer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,24 +81,5 @@ int	main(int ac, char **av)
 	}
 	list_quick_sort(stack_a, 0, list_get_size(stack_a));
 	logic(&stack_a, &stack_b);
-	// DEBUG
-	t_list *tmp = stack_a;
-	t_list *tmp2 = stack_b;
-	// DEBUG PRINTF
-	printf("STACK A:\n");
-	while (tmp)
-	{
-		// DEBUG PRINTF
-		printf("index:%d = value:%d\n", ((t_unit *)(tmp->content))->sorted_index, ((t_unit *)(tmp->content))->number);
-		tmp = tmp->next;
-	}
-	// DEBUG PRINTF
-	printf("STACK B:\n");
-	while (tmp2)
-	{
-		// DEBUG PRINTF
-		printf("index:%d = value:%d\n", ((t_unit *)(tmp2->content))->sorted_index, ((t_unit *)(tmp2->content))->number);
-		tmp2 = tmp2->next;
-	}
 	clear_exit(stack_a, stack_b);
 }

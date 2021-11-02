@@ -6,7 +6,7 @@
 /*   By: hadufer <hadufer@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 17:10:19 by hadufer           #+#    #+#             */
-/*   Updated: 2021/11/01 17:19:43 by hadufer          ###   ########.fr       */
+/*   Updated: 2021/11/02 14:25:58 by hadufer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	swap(t_list **a)
 	tmp = (*a)->content;
 	(*a)->content = (*a)->next->content;
 	(*a)->next->content = tmp;
+	operation++;
 }
 
 //Push a in b (change params to switch between a and b)
@@ -37,6 +38,7 @@ void	push(t_list **a, t_list **b)
 	tmp = (*a)->next;
 	ft_lstdelone(*a, delete_unit);
 	*a = tmp;
+	operation++;
 }
 
 //Rotate the stack
@@ -53,6 +55,7 @@ void	rotate(t_list **a)
 		tmp = tmp->next;
 	tmp->next = first;
 	first->next = NULL;
+	operation++;
 }
 
 //Reverse rotate the stack
@@ -78,4 +81,5 @@ void	rrotate(t_list **a)
 		before_last->next = NULL;
 	else
 		first->next = NULL;
+	operation++;
 }

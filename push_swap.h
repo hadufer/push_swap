@@ -6,7 +6,7 @@
 /*   By: hadufer <hadufer@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 14:09:23 by hadufer           #+#    #+#             */
-/*   Updated: 2021/11/01 18:26:02 by hadufer          ###   ########.fr       */
+/*   Updated: 2021/11/02 14:26:19 by hadufer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PUSH_SWAP_H
 # include "libft.h"
 
+int	operation;
 typedef struct s_unit
 {
 	int				number;
@@ -32,6 +33,7 @@ void			delete_unit(void *unit);
 t_unit			*get_unit_number(t_list *list, int number);
 t_unit			*get_unit_s_index(t_list *list, int number);
 t_unit			*get_min_unit(t_list *a);
+t_unit			*get_min_unit_quarter(t_list *a, int quarter_limit);
 void			push(t_list **a, t_list **b);
 void			swap(t_list **a);
 void			rotate(t_list **a);
@@ -42,7 +44,12 @@ void			case_312(t_list **a);
 void			case_132(t_list **a);
 void			case_231(t_list **a);
 void			median_rotate(t_list **a, int num);
+int				is_list_sorted(t_list *a);
 int				handler_case_3(t_list **a, t_list **b);
 int				logic(t_list **a, t_list **b);
+
+//DEBUG
+
+void			print_debug(t_list **a, t_list **b);
 
 #endif
