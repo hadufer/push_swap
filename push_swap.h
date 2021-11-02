@@ -6,7 +6,7 @@
 /*   By: hadufer <hadufer@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 14:09:23 by hadufer           #+#    #+#             */
-/*   Updated: 2021/11/02 14:26:19 by hadufer          ###   ########.fr       */
+/*   Updated: 2021/11/02 16:43:51 by hadufer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,9 @@ void			delete_unit(void *unit);
 t_unit			*get_unit_number(t_list *list, int number);
 t_unit			*get_unit_s_index(t_list *list, int number);
 t_unit			*get_min_unit(t_list *a);
-t_unit			*get_min_unit_quarter(t_list *a, int quarter_limit);
+t_unit			*get_max_unit(t_list *a);
+t_unit			*get_unit_quarter(t_list *a, int quarter_limit);
+t_unit			*get_max_unit_quarter(t_list *a, int quarter_limit);
 void			push(t_list **a, t_list **b);
 void			swap(t_list **a);
 void			rotate(t_list **a);
