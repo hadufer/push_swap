@@ -6,7 +6,7 @@
 /*   By: hadufer <hadufer@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 17:00:22 by hadufer           #+#    #+#             */
-/*   Updated: 2021/11/02 16:57:51 by hadufer          ###   ########.fr       */
+/*   Updated: 2021/11/03 17:41:46 by hadufer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,12 +116,15 @@ t_unit	*get_max_unit(t_list *a)
 	return (ret);
 }
 
-// Return min unit int t_list *a with s_index < quarter_limt
+// Return random unit int t_list *a with s_index < quarter_limt
+// Return min unit if quarter_limit > list_get_size(a)
 t_unit	*get_unit_quarter(t_list *a, int quarter_limit)
 {
 	t_list	*tmp;
 
 	tmp = a;
+	if (quarter_limit >= list_get_size(a) && quarter_limit <= 10)
+		return (get_min_unit(a));
 	while (tmp)
 	{
 		if (((t_unit *)((tmp)->content))->sorted_index <= quarter_limit)

@@ -6,7 +6,7 @@
 /*   By: hadufer <hadufer@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 17:10:19 by hadufer           #+#    #+#             */
-/*   Updated: 2021/11/02 14:25:58 by hadufer          ###   ########.fr       */
+/*   Updated: 2021/11/03 12:01:31 by hadufer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,20 @@
 
 //Swap the 2 first num of the stack
 //Crash if a < 2
-void	swap(t_list **a)
+void	swap(t_list **a, t_list **operation, char *op)
 {
 	void	*tmp;
 
 	tmp = (*a)->content;
 	(*a)->content = (*a)->next->content;
 	(*a)->next->content = tmp;
-	operation++;
+	operation_g++;
+	add_op(operation, op);
 }
 
 //Push a in b (change params to switch between a and b)
 //Crash if a doesnt exist
-void	push(t_list **a, t_list **b)
+void	push(t_list **a, t_list **b, t_list **operation, char *op)
 {
 	t_list	*new;
 	t_list	*tmp;
@@ -38,12 +39,13 @@ void	push(t_list **a, t_list **b)
 	tmp = (*a)->next;
 	ft_lstdelone(*a, delete_unit);
 	*a = tmp;
-	operation++;
+	operation_g++;
+	add_op(operation, op);
 }
 
 //Rotate the stack
 //Crash if a < 2 unit
-void	rotate(t_list **a)
+void	rotate(t_list **a, t_list **operation, char *op)
 {
 	t_list	*tmp;
 	t_list	*first;
@@ -55,12 +57,13 @@ void	rotate(t_list **a)
 		tmp = tmp->next;
 	tmp->next = first;
 	first->next = NULL;
-	operation++;
+	operation_g++;
+	add_op(operation, op);
 }
 
 //Reverse rotate the stack
 //Crash if a < 2 unit
-void	rrotate(t_list **a)
+void	rrotate(t_list **a, t_list **operation, char *op)
 {
 	t_list	*tmp;
 	t_list	*first;
@@ -81,5 +84,6 @@ void	rrotate(t_list **a)
 		before_last->next = NULL;
 	else
 		first->next = NULL;
-	operation++;
+	operation_g++;
+	add_op(operation, op);
 }

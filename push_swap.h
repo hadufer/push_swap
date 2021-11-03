@@ -6,7 +6,7 @@
 /*   By: hadufer <hadufer@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 14:09:23 by hadufer           #+#    #+#             */
-/*   Updated: 2021/11/02 16:43:51 by hadufer          ###   ########.fr       */
+/*   Updated: 2021/11/03 12:05:58 by hadufer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define PUSH_SWAP_H
 # include "libft.h"
 
-int	operation;
+int	operation_g;
 typedef struct s_unit
 {
 	int				number;
@@ -36,22 +36,29 @@ t_unit			*get_min_unit(t_list *a);
 t_unit			*get_max_unit(t_list *a);
 t_unit			*get_unit_quarter(t_list *a, int quarter_limit);
 t_unit			*get_max_unit_quarter(t_list *a, int quarter_limit);
-void			push(t_list **a, t_list **b);
-void			swap(t_list **a);
-void			rotate(t_list **a);
-void			rrotate(t_list **a);
-void			case_213(t_list **a);
-void			case_321(t_list **a);
-void			case_312(t_list **a);
-void			case_132(t_list **a);
-void			case_231(t_list **a);
-void			median_rotate(t_list **a, int num);
+void			push(t_list **a, t_list **b, t_list **operation, char *op);
+void			swap(t_list **a, t_list **operation, char *op);
+void			rotate(t_list **a, t_list **operation, char *op);
+void			rrotate(t_list **a, t_list **operation, char *op);
+void			case_213(t_list **a, t_list **op, int stack);
+void			case_321(t_list **a, t_list **op, int stack);
+void			case_312(t_list **a, t_list **op, int stack);
+void			case_132(t_list **a, t_list **op, int stack);
+void			case_231(t_list **a, t_list **op, int stack);
+void			median_rotate(t_list **a, int num, t_list **op_list, int stack);
 int				is_list_sorted(t_list *a);
-int				handler_case_3(t_list **a, t_list **b);
-int				logic(t_list **a, t_list **b);
+int				handler_case_3(t_list **a, t_list **op_list, int stack);
+int				logic(t_list **a, t_list **b, t_list **op_list);
+int				is_successor(int a, int b);
+int				is_top_3_successor(t_list **a);
+
+// IN TEST
+void			add_op(t_list **operation, char *op_name);
+void			del_op(t_list **operation, int index);
 
 //DEBUG
 
 void			print_debug(t_list **a, t_list **b);
+void			print_operation(t_list **op_list);
 
 #endif

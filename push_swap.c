@@ -6,7 +6,7 @@
 /*   By: hadufer <hadufer@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 13:37:35 by hadufer           #+#    #+#             */
-/*   Updated: 2021/11/02 11:10:55 by hadufer          ###   ########.fr       */
+/*   Updated: 2021/11/03 11:43:04 by hadufer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_unit	*init_new_unit(char *str_digit, unsigned int sorted_index)
 	return (out);
 }
 
-t_list	*init_list(int ac, char **av)
+t_list	*init_stack(int ac, char **av)
 {
 	t_list			*out;
 	t_unit			*tmp_u;
@@ -66,20 +66,22 @@ int	main(int ac, char **av)
 {
 	t_list	*stack_a;
 	t_list	*stack_b;
+	t_list	*operation_list;
 
 	if ((ac < 2) || parse_entry(ac, av) == -1)
 	{
 		ft_printf("Error\n");
 		return (1);
 	}
-	stack_a = init_list(ac, av);
+	stack_a = init_stack(ac, av);
 	stack_b = NULL;
+	operation_list = NULL;
 	if (!stack_a)
 	{
 		ft_printf("Error\n");
 		return (1);
 	}
 	list_quick_sort(stack_a, 0, list_get_size(stack_a));
-	logic(&stack_a, &stack_b);
+	logic(&stack_a, &stack_b, &operation_list);
 	clear_exit(stack_a, stack_b);
 }

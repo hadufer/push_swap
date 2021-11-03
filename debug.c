@@ -6,7 +6,7 @@
 /*   By: hadufer <hadufer@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 11:07:17 by hadufer           #+#    #+#             */
-/*   Updated: 2021/11/02 14:25:48 by hadufer          ###   ########.fr       */
+/*   Updated: 2021/11/03 16:22:38 by hadufer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,17 @@ void	print_debug(t_list **a, t_list **b)
 		ft_printf("index:%d = value:%d\n", ((t_unit *)(tmp2->content))->sorted_index, ((t_unit *)(tmp2->content))->number);
 		tmp2 = tmp2->next;
 	}
-	ft_printf("OPERATION: %d\n", operation);
+	ft_printf("OPERATION: %d\n", operation_g);
+}
+
+void	print_operation(t_list **op_list)
+{
+	t_list	*tmp;
+
+	tmp = *op_list;
+	while (tmp)
+	{
+		ft_putendl_fd((char *)(tmp->content), 1);
+		tmp = tmp->next;
+	}
 }

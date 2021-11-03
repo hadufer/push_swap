@@ -6,14 +6,14 @@
 #    By: hadufer <hadufer@student.42nice.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/12 13:33:44 by hadufer           #+#    #+#              #
-#    Updated: 2021/11/01 17:23:40 by hadufer          ###   ########.fr        #
+#    Updated: 2021/11/03 16:17:36 by hadufer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 CC = gcc
 RM = rm -f
-CFLAGS = -Wall -Werror -Wextra -g
+CFLAGS = -Wall -Werror -Wextra -g -fsanitize=address
 
 SRCS =	$(wildcard *.c)
 
