@@ -6,7 +6,7 @@
 /*   By: hadufer <hadufer@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 17:10:19 by hadufer           #+#    #+#             */
-/*   Updated: 2021/11/03 12:01:31 by hadufer          ###   ########.fr       */
+/*   Updated: 2021/11/05 09:02:00 by hadufer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	swap(t_list **a, t_list **operation, char *op)
 	tmp = (*a)->content;
 	(*a)->content = (*a)->next->content;
 	(*a)->next->content = tmp;
-	operation_g++;
 	add_op(operation, op);
 }
 
@@ -39,7 +38,6 @@ void	push(t_list **a, t_list **b, t_list **operation, char *op)
 	tmp = (*a)->next;
 	ft_lstdelone(*a, delete_unit);
 	*a = tmp;
-	operation_g++;
 	add_op(operation, op);
 }
 
@@ -57,7 +55,6 @@ void	rotate(t_list **a, t_list **operation, char *op)
 		tmp = tmp->next;
 	tmp->next = first;
 	first->next = NULL;
-	operation_g++;
 	add_op(operation, op);
 }
 
@@ -84,6 +81,5 @@ void	rrotate(t_list **a, t_list **operation, char *op)
 		before_last->next = NULL;
 	else
 		first->next = NULL;
-	operation_g++;
 	add_op(operation, op);
 }

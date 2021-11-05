@@ -6,7 +6,7 @@
 /*   By: hadufer <hadufer@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 14:09:23 by hadufer           #+#    #+#             */
-/*   Updated: 2021/11/03 12:05:58 by hadufer          ###   ########.fr       */
+/*   Updated: 2021/11/05 12:29:44 by hadufer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define PUSH_SWAP_H
 # include "libft.h"
 
-int	operation_g;
 typedef struct s_unit
 {
 	int				number;
@@ -24,7 +23,7 @@ int				is_single(int ac, char **av, int str_test_index);
 int				str_is_digit(char *str);
 int				is_valid_int(char *str);
 int				parse_entry(int ac, char **av);
-void			clear_exit(t_list *stack_a, t_list *stack_b);
+void			clear_exit(t_list **stack_a, t_list **stack_b, t_list **op_list);
 int				list_get_index(t_list *list, int number);
 int				list_get_size(t_list *list);
 void			list_quick_sort(t_list *list, int low, int high);
@@ -48,7 +47,7 @@ void			case_231(t_list **a, t_list **op, int stack);
 void			median_rotate(t_list **a, int num, t_list **op_list, int stack);
 int				is_list_sorted(t_list *a);
 int				handler_case_3(t_list **a, t_list **op_list, int stack);
-int				logic(t_list **a, t_list **b, t_list **op_list);
+int				logic(t_list **a, t_list **b, t_list **op_list, int key_nbr);
 int				is_successor(int a, int b);
 int				is_top_3_successor(t_list **a);
 

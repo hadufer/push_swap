@@ -6,11 +6,12 @@
 /*   By: hadufer <hadufer@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 13:58:14 by hadufer           #+#    #+#             */
-/*   Updated: 2021/10/13 17:27:25 by hadufer          ###   ########.fr       */
+/*   Updated: 2021/11/05 09:10:02 by hadufer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "ft_printf.h"
 #include <limits.h>
 #include <stdlib.h>
 
@@ -91,7 +92,10 @@ int	parse_entry(int ac, char **av)
 	while (i < ac)
 	{
 		if (!is_valid_int(av[i]) || !is_single(ac, av, i))
+		{
+			ft_printf("Error\n");
 			return (-1);
+		}
 		i++;
 	}
 	return (0);
