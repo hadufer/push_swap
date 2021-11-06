@@ -6,7 +6,7 @@
 #    By: hadufer <hadufer@student.42nice.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/06 19:55:06 by hadufer           #+#    #+#              #
-#    Updated: 2021/10/22 17:10:52 by hadufer          ###   ########.fr        #
+#    Updated: 2021/11/06 09:30:36 by hadufer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,8 @@ SRCS	=	ft_printf.c\
 			print_ascii.c\
 			print_signed.c\
 			print_unsigned.c\
+			get_next_line.c\
+			get_next_line_utils.c\
 
 
 OBJS		= ${SRCS:.c=.o}

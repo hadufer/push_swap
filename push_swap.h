@@ -6,7 +6,7 @@
 /*   By: hadufer <hadufer@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 14:09:23 by hadufer           #+#    #+#             */
-/*   Updated: 2021/11/05 12:29:44 by hadufer          ###   ########.fr       */
+/*   Updated: 2021/11/06 09:20:43 by hadufer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,11 @@ int				handler_case_3(t_list **a, t_list **op_list, int stack);
 int				logic(t_list **a, t_list **b, t_list **op_list, int key_nbr);
 int				is_successor(int a, int b);
 int				is_top_3_successor(t_list **a);
-
-// IN TEST
+t_list			*init_stack(int ac, char **av);
+t_unit			*init_new_unit(char *str_digit, unsigned int sorted_index);
 void			add_op(t_list **operation, char *op_name);
 void			del_op(t_list **operation, int index);
+void			clear_exit(t_list **stack_a, t_list **stack_b, t_list **op_list);
 
 //DEBUG
 

@@ -6,7 +6,7 @@
 /*   By: hadufer <hadufer@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 20:20:38 by hadufer           #+#    #+#             */
-/*   Updated: 2021/11/05 12:52:25 by hadufer          ###   ########.fr       */
+/*   Updated: 2021/11/06 15:07:03 by hadufer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ t_unit	*get_unit_quarter(t_list *a, int quarter_limit)
 	t_list	*tmp;
 
 	tmp = a;
-	if (quarter_limit >= list_get_size(a) && quarter_limit <= 10)
+	if ((quarter_limit >= list_get_size(a)) && (quarter_limit <= 50))
 		return (get_min_unit(a));
 	while (tmp)
 	{
