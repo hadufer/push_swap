@@ -6,7 +6,7 @@
 #    By: hadufer <hadufer@student.42nice.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/27 17:09:00 by hadufer           #+#    #+#              #
-#    Updated: 2021/11/03 11:45:33 by hadufer          ###   ########.fr        #
+#    Updated: 2021/11/09 11:23:34 by hadufer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,7 +66,7 @@ CC		= gcc
 RM		= rm -f
 AR		= ar rcs
 
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror
 
 %.o: %.c
 			${CC} -c ${CFLAGS} -o $@ $<
