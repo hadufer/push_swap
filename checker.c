@@ -6,7 +6,7 @@
 /*   By: hadufer <hadufer@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 08:56:31 by hadufer           #+#    #+#             */
-/*   Updated: 2021/11/06 16:36:51 by hadufer          ###   ########.fr       */
+/*   Updated: 2021/11/06 16:41:07 by hadufer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	checker_make_op_list(t_list **a, t_list **b, t_list **op_list)
 	return (0);
 }
 
-int	checker_dispatch_2(t_list **a, t_list **b, char *op_arg, char *tmp)
+int	checker_dispatch_2(t_list **a, t_list **b, char *op_arg, t_list *tmp)
 {
 	if (ft_strlen(op_arg) == 3 && !ft_strncmp(op_arg, "pb\n", 3))
 		push(a, b, &tmp, NULL);
@@ -131,20 +131,4 @@ void	checker_logic(t_list **a, t_list **b, t_list **op_list)
 	else
 		ft_printf("KO\n");
 	clear_exit(a, b, op_list);
-}
-
-int	main(int ac, char **av)
-{
-	t_list	*stack_a;
-	t_list	*stack_b;
-	t_list	*op_list;
-
-	if ((ac < 2) || parse_entry(ac, av) == -1)
-		return (-1);
-	stack_a = init_stack(ac, av);
-	stack_b = NULL;
-	list_quick_sort(stack_a, 0, list_get_size(stack_a));
-	if (checker_make_op_list(&stack_a, &stack_b, &op_list) == -1)
-		clear_exit(&stack_a, &stack_b, &op_list);
-	checker_logic(&stack_a, &stack_b, &op_list);
 }

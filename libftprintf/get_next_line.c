@@ -6,7 +6,7 @@
 /*   By: hadufer <hadufer@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 12:52:10 by hadufer           #+#    #+#             */
-/*   Updated: 2021/11/06 10:24:06 by hadufer          ###   ########.fr       */
+/*   Updated: 2021/11/06 17:17:36 by hadufer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,8 @@ static char	*general_handler(char **tmp, char **tmp2, char **buf, int *status)
 	(void)status;
 	free(*tmp);
 	*tmp = gnl_ft_strndup(*buf,
-			(gnl_ft_strlen(*buf) - gnl_ft_strlen(gnl_ft_strchr(*buf, '\n') + 1)));
+			(gnl_ft_strlen(*buf)
+				- gnl_ft_strlen(gnl_ft_strchr(*buf, '\n') + 1)));
 	*tmp2 = *buf;
 	*buf = gnl_ft_strndup(gnl_ft_strchr(*buf, '\n') + 1,
 			gnl_ft_strlen(gnl_ft_strchr(*buf, '\n') + 1));

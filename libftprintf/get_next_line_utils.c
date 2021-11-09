@@ -6,7 +6,7 @@
 /*   By: hadufer <hadufer@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 12:52:14 by hadufer           #+#    #+#             */
-/*   Updated: 2021/11/06 10:20:14 by hadufer          ###   ########.fr       */
+/*   Updated: 2021/11/06 17:17:22 by hadufer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,8 @@ char	*gnl_ft_strjoin(char *s1, char *s2)
 	char	*ret;
 	size_t	i;
 
-	ret = gnl_ft_calloc(gnl_ft_strlen(s1) + gnl_ft_strlen(s2) + 1, sizeof(char));
+	ret = gnl_ft_calloc(gnl_ft_strlen(s1)
+			+ gnl_ft_strlen(s2) + 1, sizeof(char));
 	if (!ret)
 		return (NULL);
 	i = 0;

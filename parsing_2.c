@@ -1,47 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   list_util.c                                        :+:      :+:    :+:   */
+/*   parsing_2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hadufer <hadufer@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/12 17:00:22 by hadufer           #+#    #+#             */
-/*   Updated: 2021/11/06 16:44:35 by hadufer          ###   ########.fr       */
+/*   Created: 2021/11/06 16:49:24 by hadufer           #+#    #+#             */
+/*   Updated: 2021/11/06 17:02:01 by hadufer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "push_swap.h"
 #include "ft_printf.h"
+#include "push_swap.h"
+#include <limits.h>
+#include <stdlib.h>
 
-int	list_get_index(t_list *list, int number)
+int	parse_entry(int ac, char **av)
 {
-	t_list			*tmp;
-	int				i;
+	int	i;
 
-	i = 0;
-	tmp = list;
-	while (tmp)
+	i = 1;
+	while (i < ac)
 	{
-		if (((t_unit *)(tmp->content))->number == number)
-			return (i);
+		if (!is_valid_int(av[i]) || !is_single(ac, av, i))
+		{
+			ft_printf("Error\n");
+			return (-1);
+		}
 		i++;
-		tmp = tmp->next;
 	}
-	return (-1);
-}
-
-int	list_get_size(t_list *list)
-{
-	t_list	*tmp;
-	int		i;
-
-	tmp = list;
-	i = 0;
-	while (tmp)
-	{
-		i++;
-		tmp = tmp->next;
-	}
-	return (i);
+	return (0);
 }

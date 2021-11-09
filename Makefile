@@ -6,7 +6,7 @@
 #    By: hadufer <hadufer@student.42nice.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/12 13:33:44 by hadufer           #+#    #+#              #
-#    Updated: 2021/11/06 16:32:44 by hadufer          ###   ########.fr        #
+#    Updated: 2021/11/06 16:51:11 by hadufer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,13 +24,16 @@ logic_utils.c \
 operation.c \
 operation_list.c \
 parsing.c \
+parsing_2.c \
 pre_sort.c \
 unit_util.c \
+unit_util_2.c \
 push_swap_main_utils.c \
+checker.c \
 
 SRCS_PUSH_SWAP = push_swap.c \
 
-SRCS_CHECKER = checker.c \
+SRCS_CHECKER = checker_main.c \
 
 OBJS = $(SRCS:.c=.o)
 

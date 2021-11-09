@@ -6,7 +6,7 @@
 /*   By: hadufer <hadufer@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 13:58:14 by hadufer           #+#    #+#             */
-/*   Updated: 2021/11/05 09:10:02 by hadufer          ###   ########.fr       */
+/*   Updated: 2021/11/06 17:01:16 by hadufer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,22 @@ int	is_single(int ac, char **av, int to_test)
 	return (1);
 }
 
+int	is_valid_int_2(char *str, int i, long *out, int neg)
+{
+	if (str[i] && (str[i] < '0' || str[i] > '9'))
+	{
+		free(str);
+		return (0);
+	}
+	*out *= neg;
+	if (*out > INT_MAX || *out < INT_MIN)
+	{
+		free(str);
+		return (0);
+	}
+	return (1);
+}
+
 int	is_valid_int(char *str)
 {
 	int		i;
@@ -69,34 +85,8 @@ int	is_valid_int(char *str)
 		out = (str[i] - 48) + (10 * out);
 		i++;
 	}
-	if (str[i] && (str[i] < '0' || str[i] > '9'))
-	{
-		free(str);
+	if (is_valid_int_2(str, i, &out, neg) == 0)
 		return (0);
-	}
-	out *= neg;
-	if (out > INT_MAX || out < INT_MIN)
-	{
-		free(str);
-		return (0);
-	}
 	free(str);
 	return (1);
-}
-
-int	parse_entry(int ac, char **av)
-{
-	int	i;
-
-	i = 1;
-	while (i < ac)
-	{
-		if (!is_valid_int(av[i]) || !is_single(ac, av, i))
-		{
-			ft_printf("Error\n");
-			return (-1);
-		}
-		i++;
-	}
-	return (0);
 }

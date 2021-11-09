@@ -1,47 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   list_util.c                                        :+:      :+:    :+:   */
+/*   checker_main.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hadufer <hadufer@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/12 17:00:22 by hadufer           #+#    #+#             */
-/*   Updated: 2021/11/06 16:44:35 by hadufer          ###   ########.fr       */
+/*   Created: 2021/11/06 16:38:43 by hadufer           #+#    #+#             */
+/*   Updated: 2021/11/06 16:39:03 by hadufer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "push_swap.h"
-#include "ft_printf.h"
 
-int	list_get_index(t_list *list, int number)
+int	main(int ac, char **av)
 {
-	t_list			*tmp;
-	int				i;
+	t_list	*stack_a;
+	t_list	*stack_b;
+	t_list	*op_list;
 
-	i = 0;
-	tmp = list;
-	while (tmp)
-	{
-		if (((t_unit *)(tmp->content))->number == number)
-			return (i);
-		i++;
-		tmp = tmp->next;
-	}
-	return (-1);
-}
-
-int	list_get_size(t_list *list)
-{
-	t_list	*tmp;
-	int		i;
-
-	tmp = list;
-	i = 0;
-	while (tmp)
-	{
-		i++;
-		tmp = tmp->next;
-	}
-	return (i);
+	if ((ac < 2) || parse_entry(ac, av) == -1)
+		return (-1);
+	stack_a = init_stack(ac, av);
+	stack_b = NULL;
+	list_quick_sort(stack_a, 0, list_get_size(stack_a));
+	if (checker_make_op_list(&stack_a, &stack_b, &op_list) == -1)
+		clear_exit(&stack_a, &stack_b, &op_list);
+	checker_logic(&stack_a, &stack_b, &op_list);
 }

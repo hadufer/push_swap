@@ -6,7 +6,7 @@
 /*   By: hadufer <hadufer@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 17:35:28 by hadufer           #+#    #+#             */
-/*   Updated: 2021/11/01 18:23:23 by hadufer          ###   ########.fr       */
+/*   Updated: 2021/11/06 16:50:02 by hadufer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,14 @@ static int	list_partition(t_list *list, int low, int high)
 	{
 		if (get_unit_s_index(list, i)->number < pivot)
 		{
-			swap_s_index(get_unit_s_index(list, i), get_unit_s_index(list, leftwall));
+			swap_s_index(get_unit_s_index(list, i),
+				get_unit_s_index(list, leftwall));
 			leftwall++;
 		}
 		i++;
 	}
-	swap_s_index(get_unit_number(list, pivot), get_unit_s_index(list, leftwall));
+	swap_s_index(get_unit_number(list, pivot),
+		get_unit_s_index(list, leftwall));
 	return (leftwall);
 }
 
