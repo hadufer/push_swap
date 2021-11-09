@@ -6,7 +6,7 @@
 /*   By: hadufer <hadufer@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 16:49:24 by hadufer           #+#    #+#             */
-/*   Updated: 2021/11/06 17:02:01 by hadufer          ###   ########.fr       */
+/*   Updated: 2021/11/09 16:30:20 by hadufer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,24 @@
 #include <limits.h>
 #include <stdlib.h>
 
-int	parse_entry(int ac, char **av)
+int	parse_entry(int *ac, char **av, char ***ret, long *j)
 {
-	int	i;
+	int		i;
+	int		start;
 
 	i = 1;
-	while (i < ac)
+	start = 1;
+	*ret = av;
+	if (*ac == 2)
 	{
-		if (!is_valid_int(av[i]) || !is_single(ac, av, i))
+		start = 0;
+		i = 0;
+		*ret = ft_split_more(av[1], " \t\n\v\f\r", ac);
+	}
+	*j = start;
+	while (i < *ac)
+	{
+		if (!is_valid_int((*ret)[i]) || !is_single(*ac, (*ret), i, start))
 		{
 			ft_printf("Error\n");
 			return (-1);

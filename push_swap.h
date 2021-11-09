@@ -6,7 +6,7 @@
 /*   By: hadufer <hadufer@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 14:09:23 by hadufer           #+#    #+#             */
-/*   Updated: 2021/11/06 16:46:33 by hadufer          ###   ########.fr       */
+/*   Updated: 2021/11/09 16:30:28 by hadufer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,10 @@ typedef struct s_unit
 	int				number;
 	int				sorted_index;
 }					t_unit;
-int				is_single(int ac, char **av, int str_test_index);
+int				is_single(int ac, char **av, int str_test_index, int start);
 int				str_is_digit(char *str);
 int				is_valid_int(char *str);
-int				parse_entry(int ac, char **av);
-void			clear_exit(t_list **stack_a,
-					t_list **stack_b, t_list **op_list);
+int				parse_entry(int *ac, char **av, char ***ret, long *j);
 int				list_get_index(t_list *list, int number);
 int				list_get_size(t_list *list);
 void			list_quick_sort(t_list *list, int low, int high);
@@ -51,7 +49,7 @@ int				handler_case_3(t_list **a, t_list **op_list, int stack);
 int				logic(t_list **a, t_list **b, t_list **op_list, int key_nbr);
 int				is_successor(int a, int b);
 int				is_top_3_successor(t_list **a);
-t_list			*init_stack(int ac, char **av);
+t_list			*init_stack(int ac, char **av, int i);
 t_unit			*init_new_unit(char *str_digit, unsigned int sorted_index);
 void			add_op(t_list **operation, char *op_name);
 void			clear_exit(t_list **stack_a,
@@ -60,6 +58,8 @@ void			checker_logic(t_list **a, t_list **b, t_list **op_list);
 int				checker_dispatch(t_list **a, t_list **b, char *op_arg);
 int				checker_make_op_list(t_list **a, t_list **b, t_list **op_list);
 int				is_op_arg_valid(char *op_arg);
+void			free_ret(char **ret);
+char			**ft_split_more(char const *str, char *c, int *len);
 //DEBUG
 void			print_debug(t_list **a, t_list **b);
 void			print_operation(t_list **op_list);

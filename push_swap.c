@@ -6,7 +6,7 @@
 /*   By: hadufer <hadufer@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 13:37:35 by hadufer           #+#    #+#             */
-/*   Updated: 2021/11/06 17:07:05 by hadufer          ###   ########.fr       */
+/*   Updated: 2021/11/09 16:44:35 by hadufer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include <stdio.h>
 #include <limits.h>
 
-int	minimax_loop(int ac, char **av)
+int	minimax_loop(int ac, char **av, int j)
 {
 	long	i[3];
 	t_list	*stack_a;
@@ -28,7 +28,7 @@ int	minimax_loop(int ac, char **av)
 	i[0] = LONG_MAX;
 	while (i[2] <= 12)
 	{
-		stack_a = init_stack(ac, av);
+		stack_a = init_stack(ac, av, j);
 		stack_b = NULL;
 		operation_list = NULL;
 		list_quick_sort(stack_a, 0, list_get_size(stack_a));
@@ -46,20 +46,45 @@ int	minimax_loop(int ac, char **av)
 	return (i[1]);
 }
 
+void	free_ret(char **ret)
+{
+	int	i;
+
+	i = 0;
+	if (!ret)
+		return ;
+	while (ret[i])
+	{
+		free(ret[i]);
+		i++;
+	}
+	free(ret);
+}
+
 int	main(int ac, char **av)
 {
 	t_list	*stack_a;
 	t_list	*stack_b;
 	t_list	*operation_list;
 	long	i_best_calc;
+	char	**ret;
+	long	j;
 
-	if ((ac < 2) || parse_entry(ac, av) == -1)
+	ret = NULL;
+	j = -1;
+	if ((ac < 2) || parse_entry(&ac, av, &ret, &j) == -1)
+	{
+		if (j == 0)
+			free_ret(ret);
 		return (-1);
-	i_best_calc = minimax_loop(ac, av);
-	stack_a = init_stack(ac, av);
+	}
+	i_best_calc = minimax_loop(ac, ret, j);
+	stack_a = init_stack(ac, ret, j);
 	stack_b = NULL;
 	list_quick_sort(stack_a, 0, list_get_size(stack_a));
 	logic(&stack_a, &stack_b, &operation_list, i_best_calc);
 	print_operation(&operation_list);
 	clear_exit(&stack_a, &stack_b, &operation_list);
+	if (j == 0)
+		free_ret(ret);
 }

@@ -6,7 +6,7 @@
 /*   By: hadufer <hadufer@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 09:21:18 by hadufer           #+#    #+#             */
-/*   Updated: 2021/11/06 09:21:19 by hadufer          ###   ########.fr       */
+/*   Updated: 2021/11/09 14:28:40 by hadufer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,20 +32,26 @@ t_unit	*init_new_unit(char *str_digit, unsigned int sorted_index)
 	return (out);
 }
 
-t_list	*init_stack(int ac, char **av)
+t_list	*init_stack(int ac, char **av, int j)
 {
 	t_list			*out;
 	t_unit			*tmp_u;
-	unsigned int	i;
+	int				i;
 
-	i = 1;
-	out = ft_lstnew(init_new_unit(av[i], i - 1));
+	i = j;
+	if (j == 1)
+		out = ft_lstnew(init_new_unit(av[i], i - 1));
+	else
+		out = ft_lstnew(init_new_unit(av[i], i));
 	if (!out)
 		return (NULL);
 	i++;
-	while (i < (unsigned int)ac)
+	while (i < ac)
 	{
-		tmp_u = init_new_unit(av[i], i - 1);
+		if (j == 1)
+			tmp_u = init_new_unit(av[i], i - 1);
+		else
+			tmp_u = init_new_unit(av[i], i);
 		if (tmp_u == NULL)
 			return (NULL);
 		ft_lstadd_back(&out, ft_lstnew(tmp_u));

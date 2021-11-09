@@ -6,7 +6,7 @@
 /*   By: hadufer <hadufer@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 13:58:14 by hadufer           #+#    #+#             */
-/*   Updated: 2021/11/06 17:01:16 by hadufer          ###   ########.fr       */
+/*   Updated: 2021/11/09 15:09:47 by hadufer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,11 @@ static long	ft_cmp_int(char *a, char *b)
 	return (ret);
 }
 
-int	is_single(int ac, char **av, int to_test)
+int	is_single(int ac, char **av, int to_test, int start)
 {
 	int		i;
 
-	i = 1;
+	i = start;
 	while (i < ac)
 	{
 		if (i != to_test && !ft_cmp_int(av[i], av[to_test]))

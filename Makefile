@@ -6,14 +6,14 @@
 #    By: hadufer <hadufer@student.42nice.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/12 13:33:44 by hadufer           #+#    #+#              #
-#    Updated: 2021/11/09 11:23:24 by hadufer          ###   ########.fr        #
+#    Updated: 2021/11/09 14:42:23 by hadufer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 CC = gcc
 RM = rm -f
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -g
 
 SRCS = debug.c \
 list_util.c \
@@ -30,6 +30,7 @@ unit_util.c \
 unit_util_2.c \
 push_swap_main_utils.c \
 checker.c \
+ft_split_more.c \
 
 SRCS_PUSH_SWAP = push_swap.c \
 
