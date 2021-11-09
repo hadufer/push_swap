@@ -6,13 +6,14 @@
 /*   By: hadufer <hadufer@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 17:00:22 by hadufer           #+#    #+#             */
-/*   Updated: 2021/11/06 16:44:35 by hadufer          ###   ########.fr       */
+/*   Updated: 2021/11/09 17:25:50 by hadufer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "push_swap.h"
 #include "ft_printf.h"
+#include <stdlib.h>
 
 int	list_get_index(t_list *list, int number)
 {
@@ -44,4 +45,19 @@ int	list_get_size(t_list *list)
 		tmp = tmp->next;
 	}
 	return (i);
+}
+
+void	free_ret(char **ret)
+{
+	int	i;
+
+	i = 0;
+	if (!ret)
+		return ;
+	while (ret[i])
+	{
+		free(ret[i]);
+		i++;
+	}
+	free(ret);
 }

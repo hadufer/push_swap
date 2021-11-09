@@ -6,7 +6,7 @@
 /*   By: hadufer <hadufer@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 13:37:35 by hadufer           #+#    #+#             */
-/*   Updated: 2021/11/09 16:44:35 by hadufer          ###   ########.fr       */
+/*   Updated: 2021/11/09 17:29:46 by hadufer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,25 +46,9 @@ int	minimax_loop(int ac, char **av, int j)
 	return (i[1]);
 }
 
-void	free_ret(char **ret)
-{
-	int	i;
-
-	i = 0;
-	if (!ret)
-		return ;
-	while (ret[i])
-	{
-		free(ret[i]);
-		i++;
-	}
-	free(ret);
-}
-
 int	main(int ac, char **av)
 {
-	t_list	*stack_a;
-	t_list	*stack_b;
+	t_list	*stack[2];
 	t_list	*operation_list;
 	long	i_best_calc;
 	char	**ret;
@@ -79,12 +63,12 @@ int	main(int ac, char **av)
 		return (-1);
 	}
 	i_best_calc = minimax_loop(ac, ret, j);
-	stack_a = init_stack(ac, ret, j);
-	stack_b = NULL;
-	list_quick_sort(stack_a, 0, list_get_size(stack_a));
-	logic(&stack_a, &stack_b, &operation_list, i_best_calc);
+	stack[0] = init_stack(ac, ret, j);
+	stack[1] = NULL;
+	list_quick_sort(stack[0], 0, list_get_size(stack[0]));
+	logic(&stack[0], &stack[1], &operation_list, i_best_calc);
 	print_operation(&operation_list);
-	clear_exit(&stack_a, &stack_b, &operation_list);
 	if (j == 0)
 		free_ret(ret);
+	clear_exit(&stack[0], &stack[1], &operation_list);
 }
