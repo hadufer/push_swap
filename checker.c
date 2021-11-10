@@ -6,7 +6,7 @@
 /*   By: hadufer <hadufer@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 08:56:31 by hadufer           #+#    #+#             */
-/*   Updated: 2021/11/09 18:02:20 by hadufer          ###   ########.fr       */
+/*   Updated: 2021/11/10 11:25:30 by hadufer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,27 +66,27 @@ int	checker_make_op_list(t_list **a, t_list **b, t_list **op_list)
 	return (0);
 }
 
-int	checker_dispatch_2(t_list **a, t_list **b, char *op_arg, t_list *tmp)
+int	checker_dispatch_2(t_list **a, t_list **b, char *op_arg, t_list **tmp)
 {
 	if (ft_strlen(op_arg) == 3 && !ft_strncmp(op_arg, "pb\n", 3))
-		push(a, b, &tmp, NULL);
+		push(a, b, tmp, NULL);
 	else if (ft_strlen(op_arg) == 3 && !ft_strncmp(op_arg, "ra\n", 3))
-		rotate(a, &tmp, NULL);
+		rotate(a, tmp, NULL);
 	else if (ft_strlen(op_arg) == 3 && !ft_strncmp(op_arg, "rb\n", 3))
-		rotate(b, &tmp, NULL);
+		rotate(b, tmp, NULL);
 	else if (ft_strlen(op_arg) == 3 && !ft_strncmp(op_arg, "rr\n", 3))
 	{
-		rotate(a, &tmp, NULL);
-		rotate(b, &tmp, NULL);
+		rotate(a, tmp, NULL);
+		rotate(b, tmp, NULL);
 	}
 	else if (ft_strlen(op_arg) == 4 && !ft_strncmp(op_arg, "rra\n", 4))
-		rrotate(a, &tmp, NULL);
+		rrotate(a, tmp, NULL);
 	else if (ft_strlen(op_arg) == 4 && !ft_strncmp(op_arg, "rrb\n", 4))
-		rrotate(b, &tmp, NULL);
+		rrotate(b, tmp, NULL);
 	else if (ft_strlen(op_arg) == 4 && !ft_strncmp(op_arg, "rrr\n", 4))
 	{
-		rrotate(a, &tmp, NULL);
-		rrotate(b, &tmp, NULL);
+		rrotate(a, tmp, NULL);
+		rrotate(b, tmp, NULL);
 	}
 	return (0);
 }
@@ -107,7 +107,7 @@ int	checker_dispatch(t_list **a, t_list **b, char *op_arg)
 	}
 	else if (ft_strlen(op_arg) == 3 && !ft_strncmp(op_arg, "pa\n", 3))
 		push(b, a, &tmp, NULL);
-	else if (!checker_dispatch_2(a, b, op_arg, tmp))
+	else if (!checker_dispatch_2(a, b, op_arg, &tmp))
 	{
 		free(tmp);
 		return (0);
