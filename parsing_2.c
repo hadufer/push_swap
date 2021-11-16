@@ -6,7 +6,7 @@
 /*   By: hadufer <hadufer@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 16:49:24 by hadufer           #+#    #+#             */
-/*   Updated: 2021/11/09 16:58:58 by hadufer          ###   ########.fr       */
+/*   Updated: 2021/11/16 08:57:15 by hadufer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	parse_entry(int *ac, char **av, char ***ret, long *j)
 	i = 1;
 	start = 1;
 	*ret = av;
-	if (*ac == 2)
+	if (*ac == 2 && *av[1])
 	{
 		start = 0;
 		i = 0;

@@ -6,7 +6,7 @@
 /*   By: hadufer <hadufer@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 13:40:22 by hadufer           #+#    #+#             */
-/*   Updated: 2021/11/09 11:19:46 by hadufer          ###   ########.fr       */
+/*   Updated: 2021/11/16 08:47:40 by hadufer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,8 @@ int	logic(t_list **a, t_list **b, t_list **op_list, int key_nbr)
 
 	tab[1] = key_nbr;
 	tab[0] = list_get_size(*a) / tab[1];
+	logic_main(a, b, op_list, tab);
+	logic_2(a, b, op_list);
 	logic_main(a, b, op_list, tab);
 	logic_2(a, b, op_list);
 	logic_main(a, b, op_list, tab);
